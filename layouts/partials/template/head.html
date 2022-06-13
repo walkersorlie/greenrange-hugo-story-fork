@@ -1,9 +1,9 @@
 <head>
-	<title>{{ .Site.Title }}</title>
+	<title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Description }}{{ end }}</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<meta name="description" content="{{ if .Param "description" }}{{ .Param "description" }}{{ else }}{{ end }}">
-	<meta name="author" content="{{if .Param "author" }}{{ .Param "author" }}{{ else }}{{ end }}">
+	<meta name="description" content="{{ if .IsHome}}{{ .Param "description" }}{{ else }}{{ .Description }}{{ end }}">
+	<meta name="author" content="{{ if .Param "author" }}{{ .Param "author" }}{{ else }}{{ end }}">
 	{{ if .Site.Params.favicon }}
 	{{ partial "template/favicon" }}
 	{{ end }}
